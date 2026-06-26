@@ -1,0 +1,41 @@
+# Skill Linter 配置示例
+# 将此文件保存为 ~/.hermes/skills/skill-linter/lint-config.yaml 即可启用自定义规则
+
+# 扫描目录配置（默认已包含三个目录，可通过此配置覆盖）
+directories:
+  - path: "~/.openclaw/workspace/skills"
+    name: "OpenClaw Workspace Skills"
+  - path: "~/.npm-global/lib/node_modules/openclaw/skills"
+    name: "OpenClaw NPM Skills"
+  - path: "~/.hermes/skills"
+    name: "Hermes Skills"
+
+# 必填字段配置（可扩展）
+required_fields:
+  name: string
+  description: string
+  author: string
+  version: string
+  license: string
+  platforms: array
+  # 举例：添加自定义必填字段
+  # tags: array
+  # version: string
+
+# YAML 格式规则
+format_rules:
+  indent: 2  # 期望的缩进空格数
+  string_quotes: double  # "double" 或 "single"
+  max_line_length: 120
+
+# 输出配置
+output:
+  format: html  # "html" 或 "json"
+  output_dir: "~/.hermes/cron/output"
+  filename_template: "skill-lint-report-{timestamp}.html"
+
+# 自动修复配置（待实现）
+# auto_fix:
+#   enabled: false
+#   backup: true
+#   missing_fields: "add_empty"
